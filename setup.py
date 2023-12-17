@@ -12,7 +12,7 @@ with codecs.open(os.path.join(here, "Readme.md"), encoding="utf-8") as fh:
 
 setup(
     name="storage-hub",
-    version='0.0.4',
+    version='0.0.1',
     author="Vitaliy Zakharkiv",
     author_email="vzaharkiv28@mail.com",
     description="soon",
