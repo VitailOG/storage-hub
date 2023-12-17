@@ -3,7 +3,7 @@ name: PyPI Deployment
 on:
   push:
     tags:
-      - '*'
+      - 'v*'
 
 jobs:
   deploy:
@@ -23,6 +23,18 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install setuptools wheel twine
+
+      - name: Extract version from tag
+        id: extract_version
+        run: |
+          TAG=$(git describe --tags --abbrev=0)
+          VERSION=$(echo $TAG | sed 's/v//')
+          echo "VERSION=${VERSION}" >> $GITHUB_ENV
+        shell: bash
+
+      - name: Set version in setup.py
+        run: |
+          sed -i "s/version='[0-9]*\.[0-9]*\.[0-9]*'/version='${{ env.VERSION }}'/g" setup.py
 
       - name: Build and publish
         env:
