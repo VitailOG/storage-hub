@@ -24,6 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install setuptools wheel twine
 
+      - name: Display Json
+        run: |
+          echo "${{ toJson(github) }}"
+
       - name: Extract version from tag
         id: extract_version
         run: |
