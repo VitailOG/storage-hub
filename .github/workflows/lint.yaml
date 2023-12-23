@@ -1,0 +1,19 @@
+name: CD Workflow
+
+on:
+  workflow_run:
+    workflows: ["PyPI Deployment"]
+    types:
+      - completed
+
+jobs:
+  cd-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: lint Step
+        run: |
+          echo "lint..."
