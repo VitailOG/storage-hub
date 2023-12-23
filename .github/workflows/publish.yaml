@@ -28,6 +28,11 @@ jobs:
         run: |
           echo "${{ toJson(github) }}"
 
+      - name: Failing Step
+        run: |
+          echo "This step will fail."
+          exit 1  # Це призведе до завершення з помилкою
+
       - name: Extract version from tag
         id: extract_version
         run: |

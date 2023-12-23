@@ -5,6 +5,8 @@ on:
     workflows: ["PyPI Deployment"]
     types:
       - completed
+    status:
+      - success
 
 jobs:
   cd-job:
